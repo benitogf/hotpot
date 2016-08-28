@@ -1,0 +1,73 @@
+{
+  "name": "Hotpot",
+  "version": "1.1.0",
+  "description": "Cordova livereload server for Pug, SASS and Browserify",
+  "keywords": [
+    "cordova",
+    "express",
+    "browserify",
+    "sass",
+    "pug",
+    "livereload"
+  ],
+  "license": "MIT",
+  "author": "Benito Gomez <benitogf@outlook.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/benitogf/hotpot.git"
+  },
+  "standard": {
+    "globals": [
+      "chai",
+      "expect"
+    ],
+    "env": {
+      "node": true,
+      "mocha": true
+    }
+  },
+  "main": "index.js",
+  "bin": {
+    "hotpot": "./bin/hotpot.js"
+  },
+  "scripts": {
+    "hint": "standard --verbose | snazzy",
+    "start": "node ./bin/hotpot.js",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "bistre": "^1.0.1",
+    "bole": "^3.0.1",
+    "browserify": "^13.0.1",
+    "compression": "^1.6.2",
+    "crypto": "0.0.3",
+    "csserror": "^2.0.2",
+    "gaze": "^1.1.0",
+    "concat-stream": "^1.5.1",
+    "inline-source-map-comment": "^1.0.5",
+    "node-sass": "^3.4.2",
+    "node-sass-evergreen": "^1.1.2",
+    "opn": "^4.0.2",
+    "lodash": "^4.15.0",
+    "prepend-file": "^1.3.0",
+    "pug": "^2.0.0-beta5",
+    "replacestream": "^4.0.2",
+    "require-globify": "^1.4.1",
+    "shelljs": "^0.7.3",
+    "socket.io": "^1.4.8",
+    "socket.io-client": "^1.3.7",
+    "express": "^4.13.3",
+    "stringify": "^5.1.0",
+    "uglifyjs": "^2.4.10",
+    "watchify": "^3.2.2",
+    "xml2js": "^0.4.13"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "coveralls": "^2.11.12",
+    "mocha": "^3.0.1",
+    "snazzy": "^4.0.1",
+    "standard": "^8.0.0"
+  }
+}

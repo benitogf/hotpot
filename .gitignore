@@ -1,0 +1,9 @@
+node_modules
+plugins/*
+platforms/*
+www/index.html
+www/js/*.js
+www/css/index.css
+!.gitkeep
+! www/js
+! plugins
