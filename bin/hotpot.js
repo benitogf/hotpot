@@ -6,7 +6,7 @@ const minimist = require('minimist')
 const hotpot = require('../lib')
 
 let argv = minimist(process.argv.slice(2))
-if (argv._.length === 1)
+if (argv._.length === 1) {
   switch (argv._[0]) {
     case 'help':
       hotpot.help()
