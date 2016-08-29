@@ -33,7 +33,7 @@ function getConfig (cb, env) {
         }
         cb(conf)
       } else {
-        throw new Error('Oh no! server or client widget not defined in confix.xml')
+        cb(false)
       }
     })
   })

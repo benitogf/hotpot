@@ -5,8 +5,7 @@ const app = express()
 const fs = require('fs')
 const path = require('path')
 const server = require('http').createServer(app)
-const bole = require('bole')
-const bistre = require('bistre')({ time: true })
+const Log = require('../lib/log')
 const cwd = process.cwd()
 const getConfig = require('./config')
 const prepend = require('prepend-file')
@@ -16,6 +15,8 @@ const gaze = require('gaze')
 const compression = require('compression')
 const io = require('socket.io')(server)
 const shell = require('shelljs')
+const chalk = require('chalk')
+const title = chalk.white.bgBlack.bold('hot')+chalk.red('pot')
 
 function initServer (conf, log) {
   app.set('view engine', 'pug')
@@ -109,27 +110,16 @@ function listSpecs () {
   return tags
 }
 
-function configLog (name) {
-  let log = bole(name)
-  bole.output([{
-    level: 'info',
-    stream: bistre
-  },
-  {
-    level: 'err',
-    stream: bistre
-  }])
-  bole.setFastTime(true)
-  bistre.pipe(process.stdout)
-  return log
-}
-
 function BrowserifyLivereload () {
   let b = this
   let outfile = arguments[0]
   let conf = arguments[1]
   let firstBundle = true
-  let log = configLog(conf.title)
+  let log = Log(title + ' :: ' + conf.title)
+  if (!conf) {
+    log.warn('Oh no! server or client widget not defined in confix.xml')
+    throw new Error('Missing server or client config')
+  }
   initServer(conf, log)
   testWatch(log)
   b.on('bundle', function (stream) {
@@ -158,7 +148,7 @@ function BrowserifyLivereload () {
   b.bundle().pipe(fs.createWriteStream(outfile))
 
   server.listen(conf.port)
-  log.info(conf)
+  //log.info(conf)
   log.info('server [' + conf.environment + '] ready on port ' + conf.port)
 }
 

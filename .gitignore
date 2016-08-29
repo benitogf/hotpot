@@ -1,9 +1,9 @@
 node_modules
-plugins/*
-platforms/*
-www/index.html
-www/js/*.js
-www/css/index.css
+.nyc_output
+client/plugins/*
+client/platforms/*
+client/www/js/*.js
+client/www/css/index.css
+client/www/index.html
 !.gitkeep
-! www/js
-! plugins
+! client/www/js
