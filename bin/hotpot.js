@@ -11,9 +11,6 @@ if (argv._.length === 1) {
     case 'help':
       hotpot.help()
       break
-    case 'watch':
-      hotpot.startBundle()
-      break
     case 'build-js':
       hotpot.buildJs()
       break
@@ -23,13 +20,13 @@ if (argv._.length === 1) {
     case 'copy-hook':
       hotpot.copyHook()
       break
-    case 'server':
-      require('../server/static')()
-      break
     default:
       throw new Error('oh no! option not recognized, try hotpot help to get a list of commands')
-      break
   }
 } else {
-  throw new Error('oh no! option not recognized, try hotpot help to get a list of commands')
+  if (argv._.length === 0) {
+    hotpot.startBundle()
+  } else {
+    throw new Error('oh no! option not recognized, try hotpot help to get a list of commands')
+  }
 }

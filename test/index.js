@@ -20,7 +20,7 @@ describe('build-js', function (done) {
   }
   let outfile = false
   before(function () {
-    hotpot.buildJs(buildTest)
+    hotpot.bundleJs(buildTest)
   })
   before(function () {
     outfile = fs.statSync(buildTest.out)
@@ -28,7 +28,7 @@ describe('build-js', function (done) {
   it('should create index.min.js', function () {
     expect(outfile).to.be.an.instanceOf(Object)
   })
-  after(function(){
+  after(function () {
     fs.unlinkSync(buildTest.out)
   })
 })
@@ -48,7 +48,7 @@ describe('build-specs', function (done) {
   it('should create index.specs.js', function () {
     expect(outfile).to.be.an.instanceOf(Object)
   })
-  after(function(){
+  after(function () {
     fs.unlinkSync(buildTest.out)
   })
 })

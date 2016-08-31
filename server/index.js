@@ -15,8 +15,6 @@ const gaze = require('gaze')
 const compression = require('compression')
 const io = require('socket.io')(server)
 const shell = require('shelljs')
-const chalk = require('chalk')
-const title = chalk.white.bgBlack.bold('hot')+chalk.red('pot')
 
 function initServer (conf, log) {
   app.set('view engine', 'pug')
@@ -115,7 +113,7 @@ function BrowserifyLivereload () {
   let outfile = arguments[0]
   let conf = arguments[1]
   let firstBundle = true
-  let log = Log(title + ' :: ' + conf.title)
+  let log = Log(conf.title)
   if (!conf) {
     log.warn('Oh no! server or client widget not defined in confix.xml')
     throw new Error('Missing server or client config')
@@ -148,7 +146,7 @@ function BrowserifyLivereload () {
   b.bundle().pipe(fs.createWriteStream(outfile))
 
   server.listen(conf.port)
-  //log.info(conf)
+  // log.info(conf)
   log.info('server [' + conf.environment + '] ready on port ' + conf.port)
 }
 
