@@ -16,7 +16,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var _ = require('lodash')
 var app = {
   // Application Constructor
   initialize: function () {
