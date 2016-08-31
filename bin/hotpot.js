@@ -11,10 +11,7 @@ if (argv._.length === 1) {
     case 'help':
       hotpot.help()
       break
-    case 'build-js':
-      hotpot.buildJs()
-      break
-    case 'build-specs':
+    case 'specs':
       hotpot.buildSpecs()
       break
     case 'copy-hook':

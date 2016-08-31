@@ -13,47 +13,30 @@ Cordova livereload server for Pug, SASS and Browserify
 
 [Create a cordova app](http://cordova.apache.org/#getstarted)
 Create a [src](https://github.com/benitogf/hotpot/tree/master/client/src) folder in your app directory
+Create a [test](https://github.com/benitogf/hotpot/tree/master/client/test) folder in your app directory
 
 ## installation
 
-if there is no package.json:
-
-```bash
-npm init
-```
-
-then:
-
-```bash
-npm install --save hotpot
-```
-
-add the commands as [scripts](https://docs.npmjs.com/misc/scripts) entries
+npm install -g hotpot
 
 ## cli commands
 
 ```bash
-hotpot
-```
-Will run the server in livereload mode
-
-
-```bash
 hotpot help
 ```
-Will show the command list
+show the command list
 
 ```bash
-hotpot build-js
+hotpot
 ```
-  Will build the minified js
+run the server in livereload mode
 
 ```bash
 hotpot build-specs
 ```
-  Will build the specs
+build the specs
 
 ```bash
 hotpot copy-hook
 ```
-  Will copy a build cordova hook
+copy a build cordova hook
