@@ -16,17 +16,17 @@ describe('hotpot', function () {
 })
 
 describe('build-js', function () {
-  this.timeout(0);
+  this.timeout(0)
   let buildTest = {
     in: path.join(cwd, '/client/src/index.js'),
     out: path.join(cwd, '/client/www/js/index.min.js')
   }
   let outfile = false
-  before(function(done){
+  before(function (done) {
     try {
       fs.unlinkSync(buildTest.out)
       done()
-    } catch(e) {
+    } catch (e) {
       done()
     }
   })
@@ -45,11 +45,11 @@ describe('build-specs', function (done) {
     out: path.join(cwd, '/client/www/js/index.specs.js')
   }
   let outfile = false
-  before(function(done){
+  before(function (done) {
     try {
       fs.unlinkSync(buildTest.out)
       done()
-    } catch(e) {
+    } catch (e) {
       done()
     }
   })
