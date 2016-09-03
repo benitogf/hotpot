@@ -1,8 +1,6 @@
 'use strict'
 
 const chai = require('chai')
-const chaiAsPromised = require('chai-as-promised')
-chai.use(chaiAsPromised)
 const expect = chai.expect
 const hotpot = require('../lib')
 const path = require('path')
@@ -31,7 +29,7 @@ describe('build-js', function () {
     }
   })
   before(function (done) {
-    hotpot.buildJs(buildTest).then(done)
+    hotpot.buildJs(null, buildTest).then(done)
   })
   it('should create index.min.js', function () {
     outfile = fs.statSync(buildTest.out)

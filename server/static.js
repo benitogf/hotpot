@@ -6,7 +6,7 @@ const server = require('http').createServer(app)
 const bole = require('bole')
 const bistre = require('bistre')({ time: true })
 const cwd = process.cwd()
-const getConfig = require('./config')
+const getConfig = require('../lib/config')
 const compression = require('compression')
 
 function initServer (conf) {

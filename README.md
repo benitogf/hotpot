@@ -30,6 +30,9 @@ show the command list
 hotpot
 ```
 run the server in livereload mode
+  options:
+  -t 'riot'
+    with riotify transform
 
 ```bash
 hotpot build-specs
