@@ -116,7 +116,7 @@ function BrowserifyLivereload () {
   }
   initServer(conf, log)
   testWatch(log)
-  let bundle = function() {
+  let bundle = function () {
     b.bundle().pipe(fs.createWriteStream(outfile))
   }
   let reload = function () {
@@ -139,7 +139,7 @@ function BrowserifyLivereload () {
       })
     }
   }
-  b.on('update', bundle);
+  b.on('update', bundle)
   b.on('bundle', function (stream) {
     stream.on('end', reload)
   })
