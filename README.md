@@ -1,12 +1,21 @@
 # Hotpot
 
-[![npm][npm-image]][npm-url]
+[![Build Status][build-image]][build-url]
+[![CoverageStatus][coverage-image]][coverage-url]
+[![daviddep][david-dep-image]][david-dep-url]
 [![standardjs][standardjs-image]][standardjs-url]
+[![npm][npm-image]][npm-url]
 
-[npm-image]: https://img.shields.io/npm/v/hotpot.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/package/hotpot
+[build-url]: https://travis-ci.org/benitogf/hotpot
+[build-image]: https://img.shields.io/travis/benitogf/hotpot/master.svg?style=flat-square
+[coverage-image]: https://coveralls.io/repos/github/benitogf/hotpot/badge.svg?branch=master
+[coverage-url]: https://coveralls.io/github/benitogf/hotpot?branch=master
+[david-dep-image]: https://david-dm.org/benitogf/hotpot.svg
+[david-dep-url]: https://david-dm.org/benitogf/hotpot/master
 [standardjs-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
 [standardjs-url]: http://standardjs.com/
+[npm-image]: https://img.shields.io/npm/v/hotpot.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/hotpot
 Cordova livereload server for Pug, SASS and Browserify
 
 ## requirements
