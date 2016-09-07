@@ -40,7 +40,7 @@ hotpot
 ```
 run the server in livereload mode
  - options:
-   - -t 'riot'  
+   - -t riot  
       riotify transform
 
 ```bash
