@@ -20,9 +20,9 @@ Cordova livereload server for Pug, SASS and Browserify
 
 ## requirements
 
-[Create a cordova app](http://cordova.apache.org/#getstarted)
-Create a [src](https://github.com/benitogf/hotpot/tree/master/client/src) folder in your app directory
-Create a [test](https://github.com/benitogf/hotpot/tree/master/client/test) folder in your app directory
+- [Create a cordova app](http://cordova.apache.org/#getstarted)
+- Create a [src](https://github.com/benitogf/hotpot/tree/master/client/src) folder in your app directory
+- Create a [test](https://github.com/benitogf/hotpot/tree/master/client/test) folder in your app directory
 
 ## installation
 
@@ -39,9 +39,9 @@ show the command list
 hotpot
 ```
 run the server in livereload mode
-  options:
-  -t 'riot'
-    with riotify transform
+ - options:
+   - -t 'riot'  
+      riotify transform
 
 ```bash
 hotpot build-specs
