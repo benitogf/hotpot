@@ -42,6 +42,8 @@ run the server in livereload mode
  - options:
    - -t riot  
       riotify transform
+   - -t es6  
+      babelify transform      
 
 ```bash
 hotpot build-specs

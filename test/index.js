@@ -29,7 +29,7 @@ describe('build-js', function () {
     }
   })
   before(function (done) {
-    hotpot.buildJs(null, buildTest).then(done)
+    hotpot.buildJs(['es6'], buildTest).then(done)
   })
   it('should create index.min.js', function () {
     outfile = fs.statSync(buildTest.out)
@@ -77,7 +77,12 @@ describe('build-pug', function () {
     }
   })
   before(function (done) {
-    hotpot.buildPug({}, buildTest).then(done)
+    hotpot.buildPug({
+      host: 'localhost',
+      environment: 'test',
+      ganalytics: 'ganalytics',
+      port: '8000'
+    }, buildTest).then(done)
   })
   it('should create index.html', function () {
     outfile = fs.statSync(buildTest.out)
