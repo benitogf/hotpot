@@ -109,29 +109,35 @@ function BrowserifyLivereload () {
   let outfile = arguments[0]
   let conf = arguments[1]
   let firstBundle = true
+  let afterError = false
   let log = Log(conf.title)
-  if (!conf) {
-    log.warn('Oh no! server or client widget not defined in confix.xml')
-    throw new Error('Missing server or client config')
-  }
+  // let writer
   initServer(conf, log)
   testWatch(log)
-  let bundle = function () {
-    b.bundle().pipe(fs.createWriteStream(outfile))
-  }
-  let reload = function () {
-    fs.createReadStream(path.join(__dirname, 'socket.js'))
-            .pipe(replace(/PORT/g, conf.port))
-            .pipe(replace(/HOST/g, conf.host))
-            .pipe(concat(read))
+  let reload = function (err) {
+    let file = false
+    let line = false
+    let column = false
+    let outstream = fs.createReadStream(path.join(__dirname, 'socket.js'))
+    outstream = outstream.pipe(replace(/PORT/g, conf.port))
+      .pipe(replace(/HOST/g, conf.host))
+      .pipe(replace(/ERROR/g, (!!err)))
+    if (err) {
+      log.warn(err)
+      file = (err.filename) ? JSON.stringify(err.filename) : JSON.stringify(err.message)
+      line = (err.loc) ? JSON.stringify(err.loc.line) : false
+      column = (err.loc) ? JSON.stringify(err.loc.column) : false
+      // writer.end('')
+    }
+    outstream.pipe(replace(/FILE/g, file))
+      .pipe(replace(/LINE/g, line))
+      .pipe(replace(/COLUMN/g, column))
+      .pipe(concat(read))
 
     function read (data) {
-      prepend(outfile, data + ';', function (err) {
-        if (err) {
-          throw err
-        }
+      prepend(outfile, data + ';', function () {
         if (!firstBundle) {
-          io.emit('bundle')
+          io.emit('bundle', afterError)
         } else {
           firstBundle = false
           require('opn')('http://' + conf.host + ':' + conf.port)
@@ -139,9 +145,21 @@ function BrowserifyLivereload () {
       })
     }
   }
+  let bundle = function () {
+    // writer = fs.createWriteStream(outfile)
+    b.bundle().pipe(fs.createWriteStream(outfile))
+    // writer.on('finish', function(){
+    //   console.log('we')
+    // })
+  }
   b.on('update', bundle)
   b.on('bundle', function (stream) {
-    stream.on('end', reload)
+    stream.on('error', function (err) {
+      reload(err)
+    })
+    stream.on('end', function () {
+      reload(null)
+    })
   })
   bundle()
 
