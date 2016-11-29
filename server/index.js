@@ -9,10 +9,8 @@ const server = require('http').createServer(app)
 const Log = require('../lib/log')
 const getConfig = require('../lib/config')
 const utils = require('../lib/utils')
-const prepend = require('prepend-file')
-const concat = require('concat-stream')
 const replace = require('replacestream')
-const gaze = require('gaze')
+const Gaze = require('gaze').Gaze
 const compression = require('compression')
 const io = require('socket.io')(server)
 
@@ -56,6 +54,7 @@ function initServer (conf, log) {
     log.info('no specs file found, runing hotpot without specs template, create "test/specs.pug" to activate specs')
   }
   if (isSpec) {
+    testWatch(log)
     app.use('/test', express.static(dir.test))
     app.get('/specs', function (req, res) {
       conf.specs = utils.listSpecs()
@@ -87,20 +86,17 @@ function initServer (conf, log) {
 }
 
 function testWatch (log) {
-  let testDir = cwd + '/test/specs/*.js'
-  gaze(testDir, function (err) {
-    if (err) {
-      log.warn(err)
+  let testDir = cwd + '/test/specs/'
+  let fileWatcher = new Gaze('*', {
+    debounceDelay: 1,
+    cwd: testDir
+  })
+  fileWatcher.on('all', function (event, path) {
+    if (event === 'deleted' || event === 'renamed') {
+      this.remove(path)
     }
-    var watcher = this
-    watcher.on('all', function (event, filepath) {
-      io.emit('bundle')
-      if (event === 'added') {
-        // not firing
-        // https://github.com/shama/gaze/issues/121
-        log.info(filepath + ' was ' + event)
-      }
-    })
+    log.info(path + ' was ' + event)
+    io.emit('bundle')
   })
 }
 
@@ -111,15 +107,15 @@ function BrowserifyLivereload () {
   let firstBundle = true
   let afterError = false
   let log = Log(conf.title)
-  // let writer
   initServer(conf, log)
-  testWatch(log)
   let reload = function (err) {
     let file = false
     let line = false
     let column = false
-    let outstream = fs.createReadStream(path.join(__dirname, 'socket.js'))
-    outstream = outstream.pipe(replace(/PORT/g, conf.port))
+    let livestream = fs.createWriteStream(cwd + '/www/js/livereload.js')
+    let outstream = fs.createReadStream(path.join(__dirname, 'livereload.js'))
+    outstream = outstream
+      .pipe(replace(/PORT/g, conf.port))
       .pipe(replace(/HOST/g, conf.host))
       .pipe(replace(/ERROR/g, (!!err)))
     if (err) {
@@ -127,30 +123,23 @@ function BrowserifyLivereload () {
       file = (err.filename) ? JSON.stringify(err.filename) : JSON.stringify(err.message)
       line = (err.loc) ? JSON.stringify(err.loc.line) : false
       column = (err.loc) ? JSON.stringify(err.loc.column) : false
-      // writer.end('')
     }
     outstream.pipe(replace(/FILE/g, file))
       .pipe(replace(/LINE/g, line))
       .pipe(replace(/COLUMN/g, column))
-      .pipe(concat(read))
+      .pipe(livestream)
 
-    function read (data) {
-      prepend(outfile, data + ';', function () {
-        if (!firstBundle) {
-          io.emit('bundle', afterError)
-        } else {
-          firstBundle = false
-          require('opn')('http://' + conf.host + ':' + conf.port)
-        }
-      })
-    }
+    livestream.on('finish', () => {
+      if (!firstBundle) {
+        io.emit('bundle', afterError)
+      } else {
+        firstBundle = false
+        require('opn')('http://' + conf.host + ':' + conf.port)
+      }
+    })
   }
   let bundle = function () {
-    // writer = fs.createWriteStream(outfile)
     b.bundle().pipe(fs.createWriteStream(outfile))
-    // writer.on('finish', function(){
-    //   console.log('we')
-    // })
   }
   b.on('update', bundle)
   b.on('bundle', function (stream) {
