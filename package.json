@@ -62,7 +62,7 @@
     "inline-source-map-comment": "^1.0.5",
     "lodash": "^4.16.2",
     "minimist": "^1.2.0",
-    "node-sass": "^3.10.0",
+    "node-sass": "^4.0.0",
     "node-sass-evergreen": "^1.1.2",
     "opn": "^4.0.2",
     "pug": "^2.0.0-beta5",
