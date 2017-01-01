@@ -105,7 +105,7 @@ describe('build-specs', function (done) {
     }
   })
   before(function (done) {
-    hotpot.buildSpecs(buildTest).then(done)
+    hotpot.buildSpecs(['es6'], buildTest).then(done)
   })
   it('should create index.specs.js', function () {
     outfile = fs.statSync(buildTest.out)

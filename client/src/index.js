@@ -1,3 +1,4 @@
+import { OH_NO } from './imported'
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -43,7 +44,7 @@ const app = {
 
     listeningElement.setAttribute('style', 'display:none')
     receivedElement.setAttribute('style', 'display:block')
-
+    console.log(OH_NO)
     console.log('Got Event: ' + id)
   }
 }

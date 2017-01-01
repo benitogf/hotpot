@@ -1,2 +1,1 @@
-console.log('oh no!')
-require('./test/specs/*.spec.js', { mode: 'expand' })
+import '../test/specs/index.spec.js'

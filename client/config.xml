@@ -3,11 +3,11 @@
     <name>HelloCordova</name>
     <server>
       <host>localhost</host>
-      <port>8000</port>
+      <port>9090</port>
     </server>
     <client>
       <host>localhost</host>
-      <port>8000</port>
+      <port>9090</port>
       <gapi>gapi</gapi>
       <ganalytics>ganalytics</ganalytics>
     </client>
