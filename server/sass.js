@@ -4,6 +4,7 @@
 const crypto = require('crypto')
 const Path = require('path')
 const fs = require('fs')
+const cwd = process.cwd()
 const Gaze = require('gaze').Gaze
 const csserror = require('csserror')
 const sass = require('node-sass-evergreen')
@@ -136,7 +137,13 @@ function compileSass (options) {
         sass.render({
           file: fileUrl,
           outFile: fileUrl,
-          includePaths: [Path.dirname(fileUrl), Path.resolve(options.root)],
+          includePaths: [
+            Path.dirname(fileUrl),
+            Path.resolve(options.root),
+            Path.join(cwd, 'node_modules'),
+            Path.join(cwd, 'lib'),
+            Path.join(cwd, 'src')
+          ],
           sourceComments: !!options.sourceComments,
           sourceMap: !!options.sourceMap,
           omitSourceMapUrl: !!options.sourceMap,
