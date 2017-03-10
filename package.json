@@ -75,7 +75,7 @@
     "socket.io": "^1.7.2",
     "socket.io-client": "^1.7.2",
     "stringify": "^5.1.0",
-    "uglify-js": "^2.8.3",
+    "uglify-js": "^2.8.11",
     "watchify": "^3.9.0",
     "xml2js": "^0.4.13"
   },
