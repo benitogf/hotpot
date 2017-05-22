@@ -1,6 +1,6 @@
 {
   "name": "hotpot",
-  "version": "1.4.9",
+  "version": "1.5.0",
   "description": "Cordova/nwjs livereload server for Pug, SASS and Browserify",
   "keywords": [
     "cordova",
