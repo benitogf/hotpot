@@ -1,6 +1,6 @@
 {
   "name": "hotpot",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Cordova/nwjs livereload server for Pug, SASS and Browserify",
   "keywords": [
     "cordova",
@@ -39,7 +39,9 @@
     "lib": "./lib"
   },
   "main": "./lib/index.js",
-  "bin": "./bin/hotpot.js",
+  "bin": {
+    "hotpot": "./bin/hotpot"
+  },
   "scripts": {
     "hint": "standard --verbose | snazzy",
     "start": "node ./bin/hotpot",
