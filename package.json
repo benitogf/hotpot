@@ -1,6 +1,6 @@
 {
   "name": "hotpot",
-  "version": "1.5.2",
+  "version": "1.6.2",
   "description": "Cordova/nwjs livereload server for Pug, SASS and Browserify",
   "keywords": [
     "cordova",
@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "babel-core": "^6.26.0",
-    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-env": "^1.6.1",
     "babelify": "^8.0.0",
     "bistre": "^1.0.1",
     "bole": "^3.0.2",
