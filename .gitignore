@@ -6,6 +6,8 @@ npm-debug.log
 client/plugins/*
 client/platforms/*
 client/www/js/*.js
+client/www/css/*.css
 client/www/index.html
 !.gitkeep
 ! client/www/js
+! client/www/css

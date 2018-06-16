@@ -1,6 +1,6 @@
 {
   "name": "hotpot",
-  "version": "1.6.2",
+  "version": "1.6.4",
   "description": "Cordova/nwjs livereload server for Pug, SASS and Browserify",
   "keywords": [
     "cordova",
@@ -54,7 +54,7 @@
     "babelify": "^8.0.0",
     "bistre": "^1.0.1",
     "bole": "^3.0.2",
-    "browserify": "^14.5.0",
+    "browserify": "^16.2.2",
     "chalk": "^2.3.0",
     "compression": "^1.7.1",
     "crypto": "1.0.1",
@@ -66,15 +66,14 @@
     "lodash": "^4.17.4",
     "minimist": "^1.2.0",
     "node-sass": "^4.6.0",
-    "node-sass-evergreen": "^1.1.2",
     "opn": "^5.1.0",
     "pug": "^2.0.0-rc.4",
     "q": "^1.5.1",
     "replacestream": "^4.0.2",
     "require-globify": "^1.4.1",
     "riot-compiler": "^3.2.6",
-    "riotify": "^2.0.0",
-    "shelljs": "^0.7.8",
+    "riotify": "^3.0.0",
+    "shelljs": "^0.8.2",
     "socket.io": "^2.0.4",
     "socket.io-client": "^2.0.4",
     "stringify": "^5.1.0",
@@ -85,9 +84,9 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
-    "mocha": "^4.0.1",
-    "nyc": "^11.3.0",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
     "snazzy": "^7.0.0",
-    "standard": "^10.0.3"
+    "standard": "^11.0.1"
   }
 }
