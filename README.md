@@ -16,7 +16,7 @@
 [standardjs-url]: http://standardjs.com/
 [npm-image]: https://img.shields.io/npm/v/hotpot.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/hotpot
-Cordova livereload server for Pug, SASS and Browserify
+Cordova livereload server (Pug, SASS and Browserify)
 
 ## requirements
 
