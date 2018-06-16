@@ -24,9 +24,9 @@ function compileSass (options) {
 
   fileWatcher.on('all', function (event, path) {
     if (event === 'deleted' || event === 'renamed') {
-            // OSX combined with editors that do atomic file replacements
-            // will not emit 'change' events: https://github.com/joyent/node/issues/2062
-            // Remove the file watch and assume it will be re-added when the main file is requested again
+      // OSX combined with editors that do atomic file replacements
+      // will not emit 'change' events: https://github.com/joyent/node/issues/2062
+      // Remove the file watch and assume it will be re-added when the main file is requested again
       this.remove(path)
       fileChanged(path)
       delete sassFileMap[path]
@@ -45,13 +45,13 @@ function compileSass (options) {
 
   function fileChanged (path) {
     if (Array.isArray(sassFileMap[path])) {
-            // A sass import was updated, trigger update on main file
+      // A sass import was updated, trigger update on main file
       sassFileMap[path].forEach(function (mainFile) {
         log.info('SASS: ' + path + 'was updated --> busting cache and updating' + mainFile)
         bustCache(mainFile)
 
-                // This is a hack.
-                // Would be better to emit an event to the middleware communicating with the browser
+        // This is a hack.
+        // Would be better to emit an event to the middleware communicating with the browser
         fs.utimes(mainFile, new Date(), new Date())
       })
     } else {
@@ -86,9 +86,9 @@ function compileSass (options) {
         log.warn('Error setting up file watches')
         log.warn(error)
       }
-            // else {
-            //     log.info('SASS: '+ 'Watching sass @imports:\t', importsToWatch.join('\t'));
-            // }
+      // else {
+      //     log.info('SASS: '+ 'Watching sass @imports:\t', importsToWatch.join('\t'));
+      // }
     })
   }
 
@@ -122,15 +122,15 @@ function compileSass (options) {
       })
 
       if (req.fresh) {
-                // Leverage browser cache
+        // Leverage browser cache
         log.info('SASS: ' + 'Browser cache hit:' + fileUrl)
         res.sendStatus(304)
       } else if (cache[fileUrl]) {
-                // Leverage server cache
+        // Leverage server cache
         log.info('SASS: ' + 'Server cache hit:' + fileUrl)
         res.end(cache[fileUrl])
       } else {
-                // Compile sass
+        // Compile sass
         log.info('SASS: ' + 'Compiling sass file:' + fileUrl)
         let start = Date.now()
 
