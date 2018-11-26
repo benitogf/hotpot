@@ -134,7 +134,7 @@ function BrowserifyLivereload () {
         io.emit('bundle', afterError)
       } else {
         firstBundle = false
-        require('opn')('http://' + conf.host + ':' + conf.port)
+        // require('opn')('http://' + conf.host + ':' + conf.port)
       }
     })
   }

@@ -1,53 +1,15 @@
 {
-  "name": "hotpot",
-  "version": "1.6.7",
-  "description": "Cordova/nwjs livereload server for Pug, SASS and Browserify",
-  "keywords": [
-    "cordova",
-    "express",
-    "browserify",
-    "es6",
-    "babelify",
-    "babel",
-    "sass",
-    "pug",
-    "livereload",
-    "cli"
-  ],
-  "license": "MIT",
-  "author": "Benito Gomez <benitogf@outlook.com>",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/benitogf/hotpot.git"
+  "author": {
+    "name": "Benito Gomez",
+    "email": "benitogf@outlook.com"
   },
-  "standard": {
-    "globals": [
-      "chai",
-      "expect"
-    ],
-    "env": {
-      "node": true,
-      "mocha": true
-    }
-  },
-  "preferGlobal": true,
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "directories": {
-    "bin": "./bin",
-    "lib": "./lib"
-  },
-  "main": "./lib/index.js",
   "bin": {
     "hotpot": "./bin/hotpot"
   },
-  "scripts": {
-    "hint": "standard --verbose | snazzy",
-    "start": "node ./bin/hotpot",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "test": "nyc --include=lib mocha"
+  "bugs": {
+    "url": "https://github.com/benitogf/hotpot/issues"
   },
+  "bundleDependencies": false,
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
@@ -76,10 +38,12 @@
     "socket.io": "^2.0.4",
     "socket.io-client": "^2.0.4",
     "stringify": "^5.1.0",
-    "uglify-js": "^3.1.8",
+    "uglify-es": "^3.3.9",
     "watchify": "^3.9.0",
     "xml2js": "^0.4.19"
   },
+  "deprecated": false,
+  "description": "Cordova/nwjs livereload server for Pug, SASS and Browserify",
   "devDependencies": {
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
@@ -87,5 +51,50 @@
     "nyc": "^12.0.2",
     "snazzy": "^7.0.0",
     "standard": "^11.0.1"
-  }
+  },
+  "directories": {
+    "bin": "./bin",
+    "lib": "./lib"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "homepage": "https://github.com/benitogf/hotpot#readme",
+  "keywords": [
+    "cordova",
+    "express",
+    "browserify",
+    "es6",
+    "babelify",
+    "babel",
+    "sass",
+    "pug",
+    "livereload",
+    "cli"
+  ],
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "name": "hotpot",
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/benitogf/hotpot.git"
+  },
+  "scripts": {
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "hint": "standard --verbose | snazzy",
+    "start": "node ./bin/hotpot",
+    "test": "nyc --include=lib mocha"
+  },
+  "standard": {
+    "globals": [
+      "chai",
+      "expect"
+    ],
+    "env": {
+      "node": true,
+      "mocha": true
+    }
+  },
+  "version": "1.7"
 }

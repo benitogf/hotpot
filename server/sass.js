@@ -7,7 +7,7 @@ const fs = require('fs')
 const cwd = process.cwd()
 const Gaze = require('gaze').Gaze
 const csserror = require('csserror')
-const sass = require('node-sass-evergreen')
+const sass = require('node-sass')
 const inlineSourceMapComment = require('inline-source-map-comment')
 
 function compileSass (options) {
