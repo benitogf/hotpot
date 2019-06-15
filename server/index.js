@@ -14,7 +14,7 @@ const Gaze = require('gaze').Gaze
 const compression = require('compression')
 const io = require('socket.io')(server)
 
-function initServer(conf, log) {
+function initServer (conf, log) {
   app.set('view engine', 'pug')
   app.engine('pug', require('pug').renderFile)
   app.use(compression({ threshold: 0 }))
@@ -85,7 +85,7 @@ function initServer(conf, log) {
   })
 }
 
-function testWatch(log) {
+function testWatch (log) {
   let testDir = cwd + '/test/specs/'
   let fileWatcher = new Gaze('*', {
     debounceDelay: 1,
@@ -100,7 +100,7 @@ function testWatch(log) {
   })
 }
 
-function BrowserifyLivereload() {
+function BrowserifyLivereload () {
   let b = this
   let outfile = arguments[0]
   let conf = arguments[1]
