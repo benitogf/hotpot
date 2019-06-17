@@ -9,7 +9,7 @@
   "bugs": {
     "url": "https://github.com/benitogf/hotpot/issues"
   },
-  "bundleDependencies": false,
+  "bundleDependencies": [],
   "dependencies": {
     "@babel/core": "^7.4.5",
     "babelify": "^10.0.0",
@@ -83,6 +83,7 @@
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "hint": "standard --verbose | snazzy",
+    "fix": "standard --fix",
     "start": "node ./bin/hotpot",
     "test": "nyc --include=lib mocha"
   },
