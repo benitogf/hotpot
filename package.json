@@ -12,7 +12,6 @@
   "bundleDependencies": false,
   "dependencies": {
     "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
     "babelify": "^10.0.0",
     "bistre": "^1.0.1",
     "bole": "^3.0.2",
@@ -45,6 +44,7 @@
   "deprecated": false,
   "description": "Cordova/nwjs livereload server for Pug, SASS and Browserify",
   "devDependencies": {
+    "@babel/preset-env": "^7.4.5",
     "chai": "^4.1.2",
     "coveralls": "^3.0.4",
     "mocha": "^6.1.4",
@@ -96,5 +96,5 @@
       "mocha": true
     }
   },
-  "version": "2.0.0"
+  "version": "2.1.0"
 }

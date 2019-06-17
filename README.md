@@ -40,10 +40,12 @@ hotpot
 ```
 run the server in livereload mode
  - options:
-   - -t riot  
+   - -t riot
       riotify transform
-   - -t es6  
-      babelify transform      
+   - -t es6
+      babelify transform
+   - -t react
+      babelify transform, react preset, global
 
 ```bash
 hotpot build-specs
