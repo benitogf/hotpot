@@ -2,7 +2,14 @@ doctype html
 html(xmlns='http://www.w3.org/1999/xhtml')
   head
     meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
-    meta(http-equiv='Content-Security-Policy' content="style-src 'self' 'unsafe-inline'; media-src *; connect-src 'self' http://" + host + ":" + port + " ws://" + host + ":" + port + " https://" + host + " wss://"+ host)
+    if env === 'dev'
+      meta(
+        http-equiv='Content-Security-Policy'
+        content="style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; media-src *; connect-src 'self' http://" + server.host + ":" + server.port + " ws://" + server.host + ":" + server.port + " https://" + server.host + ":" + server.port + " wss://" + server.host + ":" + server.port)
+    else
+      meta(
+        http-equiv='Content-Security-Policy'
+        content="style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; media-src *; connect-src 'self' https://" + server.host + ":" + server.port + " wss://" + server.host + ":" + server.port)
     meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
     title= title
     base(href=base)
@@ -11,20 +18,19 @@ html(xmlns='http://www.w3.org/1999/xhtml')
     meta(name='keywords', content='')
     meta(name='Resource-type', content='Document')
     link(rel="shortcut icon" href="img/logo.png")
-    if environment == 'dev'
+    if env == 'dev'
        link(rel='stylesheet', type='text/css', href='scss/index.scss')
     else
        link(rel='stylesheet', type='text/css', href='css/index.css')
-    if environment !== 'dev' && ganalytics != 'ganalytics'
+    if env !== 'dev' && ganalytics != 'ganalytics'
       script(async=true, src=`https://www.googletagmanager.com/gtag/js?id=${ganalytics}`)
-    if environment !== 'dev' && ganalytics != 'ganalytics'
+    if env !== 'dev' && ganalytics != 'ganalytics'
       script.
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', !{JSON.stringify(ganalytics)});
-  body(ng-app='app', ng-cloak='')
-    #appData.hidden(data-host=host, data-name=title, data-html5mode=html5Mode, data-preUrl=preUrl)
+  body(data-host=server.host, data-port=server.port, data-env=env)
     .app
       h1 Apache Cordova
       #deviceready.blink

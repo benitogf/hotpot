@@ -78,36 +78,15 @@ describe('build-pug', function () {
   })
   before(function (done) {
     hotpot.buildPug({
-      host: 'localhost',
+      server: {
+        host: 'localhost',
+        port: '8000'
+      },
       environment: 'test',
-      ganalytics: 'ganalytics',
-      port: '8000'
+      ganalytics: 'ganalytics'
     }, buildTest).then(done)
   })
   it('should create index.html', function () {
-    outfile = fs.statSync(buildTest.out)
-    expect(outfile).to.be.an.instanceOf(Object)
-  })
-})
-
-describe('build-specs', function (done) {
-  let buildTest = {
-    in: path.join(cwd, '/client/src/index.specs.js'),
-    out: path.join(cwd, '/client/www/js/index.specs.js')
-  }
-  let outfile = false
-  before(function (done) {
-    try {
-      fs.unlinkSync(buildTest.out)
-      done()
-    } catch (e) {
-      done()
-    }
-  })
-  before(function (done) {
-    hotpot.buildSpecs(['es6'], buildTest).then(done)
-  })
-  it('should create index.specs.js', function () {
     outfile = fs.statSync(buildTest.out)
     expect(outfile).to.be.an.instanceOf(Object)
   })

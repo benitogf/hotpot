@@ -48,11 +48,6 @@ run the server in livereload mode
       babelify transform, react preset, global
 
 ```bash
-hotpot build-specs
-```
-build the specs
-
-```bash
 hotpot copy-hook
 ```
 copy a build cordova hook

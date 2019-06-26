@@ -10,11 +10,10 @@ const Log = require('../lib/log')
 const getConfig = require('../lib/config')
 const utils = require('../lib/utils')
 const replace = require('replacestream')
-const Gaze = require('gaze').Gaze
 const compression = require('compression')
 const io = require('socket.io')(server)
 
-function initServer (conf, log) {
+function initServer(conf, log) {
   app.set('view engine', 'pug')
   app.engine('pug', require('pug').renderFile)
   app.use(compression({ threshold: 0 }))
@@ -46,29 +45,6 @@ function initServer (conf, log) {
   app.use('/img', express.static(dir.img))
   app.use('/video', express.static(dir.video))
   app.use('/node_modules', express.static(dir.nodeModules))
-  let specs = path.join(cwd, '/test/specs.pug')
-  let isSpec = false
-  try {
-    isSpec = fs.statSync(specs)
-  } catch (e) {
-    log.info('no specs file found, runing hotpot without specs template, create "test/specs.pug" to activate specs')
-  }
-  if (isSpec) {
-    testWatch(log)
-    app.use('/test', express.static(dir.test))
-    app.get('/specs', function (req, res) {
-      conf.specs = utils.listSpecs()
-      res.render(cwd + '/test/specs.pug', conf, function (err, html) {
-        if (err) {
-          log.warn(err)
-          res.status(err.status).end()
-        } else {
-          res.send(html)
-          log.info(req)
-        }
-      })
-    })
-  }
   app.get('/*', function (req, res) {
     if (conf.target === 'riot') {
       conf.tags = utils.listTags()
@@ -85,22 +61,7 @@ function initServer (conf, log) {
   })
 }
 
-function testWatch (log) {
-  let testDir = cwd + '/test/specs/'
-  let fileWatcher = new Gaze('*', {
-    debounceDelay: 1,
-    cwd: testDir
-  })
-  fileWatcher.on('all', function (event, path) {
-    if (event === 'deleted' || event === 'renamed') {
-      this.remove(path)
-    }
-    log.info(path + ' was ' + event)
-    io.emit('bundle')
-  })
-}
-
-function BrowserifyLivereload () {
+function BrowserifyLivereload() {
   let b = this
   let outfile = arguments[0]
   let conf = arguments[1]
