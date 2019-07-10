@@ -11,11 +11,11 @@
   },
   "bundleDependencies": [],
   "dependencies": {
-    "@babel/core": "^7.4.5",
+    "@babel/core": "^7.5.4",
     "babelify": "^10.0.0",
     "bistre": "^1.0.1",
     "bole": "^3.0.2",
-    "browserify": "^16.2.2",
+    "browserify": "^16.3.0",
     "chalk": "^2.4.2",
     "compression": "^1.7.4",
     "csserror": "^2.0.2",
@@ -23,11 +23,11 @@
     "gaze": "^1.1.2",
     "get-stream": "^5.1.0",
     "inline-source-map-comment": "^1.0.5",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.13",
     "minimist": "^1.2.0",
     "node-sass": "^4.12.0",
     "opn": "^6.0.0",
-    "pug": "^2.0.0-rc.4",
+    "pug": "^2.0.4",
     "q": "^1.5.1",
     "replacestream": "^4.0.2",
     "require-globify": "^1.4.1",
@@ -45,7 +45,7 @@
   "deprecated": false,
   "description": "Cordova/nwjs livereload server for Pug, SASS and Browserify",
   "devDependencies": {
-    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-env": "^7.5.4",
     "chai": "^4.1.2",
     "coveralls": "^3.0.4",
     "mocha": "^6.1.4",
@@ -98,5 +98,5 @@
       "mocha": true
     }
   },
-  "version": "3.0.1"
+  "version": "3.1.0"
 }
