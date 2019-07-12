@@ -11,14 +11,14 @@ const compression = require('compression')
 
 function initServer (conf) {
   app.use(compression({ threshold: 0 }))
-  let log = configLog(conf.title)
+  const log = configLog(conf.title)
   app.use(function (req, res, next) {
     log.info(req)
     next()
   })
 
-  let platform = cwd + '/platforms/browser/www/'
-  let dir = {
+  const platform = cwd + '/platforms/browser/www/'
+  const dir = {
     cordova: platform + 'cordova.js',
     plugins: platform + 'plugins',
     cordovaplugins: platform + 'cordova_plugins.js',
@@ -43,7 +43,7 @@ function initServer (conf) {
 }
 
 function configLog (name) {
-  let log = bole(name)
+  const log = bole(name)
   bole.output([{
     level: 'info',
     stream: bistre

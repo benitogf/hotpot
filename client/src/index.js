@@ -38,9 +38,9 @@ const app = {
   },
   // Update DOM on a Received Event
   receivedEvent: function (id) {
-    let parentElement = document.getElementById(id)
-    let listeningElement = parentElement.querySelector('.listening')
-    let receivedElement = parentElement.querySelector('.received')
+    const parentElement = document.getElementById(id)
+    const listeningElement = parentElement.querySelector('.listening')
+    const receivedElement = parentElement.querySelector('.received')
 
     listeningElement.setAttribute('style', 'display:none')
     receivedElement.setAttribute('style', 'display:block')

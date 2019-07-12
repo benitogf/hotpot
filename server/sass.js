@@ -12,12 +12,12 @@ const inlineSourceMapComment = require('inline-source-map-comment')
 
 function compileSass (options) {
   options = options || {}
-  let etagmap = {}
-  let cache = {}
+  const etagmap = {}
+  const cache = {}
   let fileUrl
-  let sassFileMap = {}
-  let log = options.log
-  let fileWatcher = new Gaze('', {
+  const sassFileMap = {}
+  const log = options.log
+  const fileWatcher = new Gaze('', {
     debounceDelay: 1,
     cwd: options.root
   })
@@ -66,7 +66,7 @@ function compileSass (options) {
       return
     }
 
-    let importsToWatch = [main]
+    const importsToWatch = [main]
 
     imports.forEach(function (path) {
       if (path !== main) {
@@ -118,7 +118,7 @@ function compileSass (options) {
 
       res.set({
         'Content-Type': 'text/css; charset=UTF-8',
-        'ETag': '"' + etagmap[fileUrl] + '"'
+        ETag: '"' + etagmap[fileUrl] + '"'
       })
 
       if (req.fresh) {
@@ -132,7 +132,7 @@ function compileSass (options) {
       } else {
         // Compile sass
         log.info('SASS: ' + 'Compiling sass file:' + fileUrl)
-        let start = Date.now()
+        const start = Date.now()
 
         sass.render({
           file: fileUrl,
@@ -158,14 +158,14 @@ function compileSass (options) {
           let css = result.css.toString('utf8')
 
           if (result.map) {
-            let comment = inlineSourceMapComment(result.map.toString('utf8'), {
+            const comment = inlineSourceMapComment(result.map.toString('utf8'), {
               block: true
             })
 
             css += '\n' + comment + '\n'
           }
 
-          let etag = crypto.createHash('md5').update(css).digest('hex').substr(0, 16) + '-compile-sass'
+          const etag = crypto.createHash('md5').update(css).digest('hex').substr(0, 16) + '-compile-sass'
 
           res.setHeader('ETag', '"' + etag + '"')
           res.end(css)

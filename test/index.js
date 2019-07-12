@@ -15,7 +15,7 @@ describe('hotpot', function () {
 
 describe('build-js', function () {
   this.timeout(0)
-  let buildTest = {
+  const buildTest = {
     in: path.join(cwd, '/client/src/index.js'),
     out: path.join(cwd, '/client/www/js/index.min.js')
   }
@@ -39,7 +39,7 @@ describe('build-js', function () {
 
 describe('build-sass', function () {
   this.timeout(0)
-  let buildTest = {
+  const buildTest = {
     in: path.join(cwd, '/client/src/scss/index.scss'),
     out: path.join(cwd, '/client/www/css/index.css')
   }
@@ -63,7 +63,7 @@ describe('build-sass', function () {
 
 describe('build-pug', function () {
   this.timeout(0)
-  let buildTest = {
+  const buildTest = {
     in: path.join(cwd, '/client/src/index.pug'),
     out: path.join(cwd, '/client/www/index.html')
   }

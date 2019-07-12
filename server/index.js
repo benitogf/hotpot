@@ -13,13 +13,13 @@ const replace = require('replacestream')
 const compression = require('compression')
 const io = require('socket.io')(server)
 
-function initServer(conf, log) {
+function initServer (conf, log) {
   app.set('view engine', 'pug')
   app.engine('pug', require('pug').renderFile)
   app.use(compression({ threshold: 0 }))
 
-  let platform = cwd + '/platforms/browser/www/'
-  let dir = {
+  const platform = cwd + '/platforms/browser/www/'
+  const dir = {
     cordova: platform + 'cordova.js',
     plugins: platform + 'plugins',
     cordovaPlugins: platform + 'cordova_plugins.js',
@@ -61,19 +61,19 @@ function initServer(conf, log) {
   })
 }
 
-function BrowserifyLivereload() {
-  let b = this
-  let outfile = arguments[0]
-  let conf = arguments[1]
+function BrowserifyLivereload () {
+  const b = this
+  const outfile = arguments[0]
+  const conf = arguments[1]
   let firstBundle = true
-  let afterError = false
-  let log = Log(conf.title)
+  const afterError = false
+  const log = Log(conf.title)
   initServer(conf, log)
-  let reload = function (err) {
+  const reload = function (err) {
     let file = false
     let line = false
     let column = false
-    let livestream = fs.createWriteStream(cwd + '/www/js/livereload.js')
+    const livestream = fs.createWriteStream(cwd + '/www/js/livereload.js')
     let outstream = fs.createReadStream(path.join(__dirname, 'livereload.js'))
     outstream = outstream
       .pipe(replace(/PORT/g, conf.port))
@@ -99,7 +99,7 @@ function BrowserifyLivereload() {
       }
     })
   }
-  let bundle = function () {
+  const bundle = function () {
     b.bundle().pipe(fs.createWriteStream(outfile))
   }
   b.on('update', bundle)
@@ -120,11 +120,11 @@ function BrowserifyLivereload() {
 
 module.exports = function (b, options) {
   if (b && options && (b.argv || options.outfile)) {
-    let outfile = options.outfile || b.argv.outfile
-    let StartBundle = BrowserifyLivereload.bind(b, outfile)
+    const outfile = options.outfile || b.argv.outfile
+    const StartBundle = BrowserifyLivereload.bind(b, outfile)
     getConfig(StartBundle)
   } else {
-    let err = { err: 'no outfile detected' }
+    const err = { err: 'no outfile detected' }
     throw err
   }
 }
