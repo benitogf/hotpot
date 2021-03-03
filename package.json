@@ -27,7 +27,7 @@
     "minimist": "^1.2.0",
     "node-sass": "^4.12.0",
     "opn": "^6.0.0",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "q": "^1.5.1",
     "replacestream": "^4.0.2",
     "require-globify": "^1.4.1",
